@@ -33,26 +33,25 @@ const getImages = (query) => {
 let slideIndex = 0;
 const selectItem = (event, img) => {
   let element = event.target;
-  //element.classList.add('added');
- 
+
   let item = sliders.indexOf(img);
   if (item == -1) {
     element.classList.add('added');
     sliders.push(img);
   }
   else {
-    element.classList.add('removed');
-    sliders.pop(img);
+    element.classList.toggle('added');
+    sliders.remove(target);
   }
 }
+
 var timer
 const createSlider=() => {
-  // check slider image length
   if (sliders.length < 2) {
     alert('Select at least 2 image.')
     return;
   }
-  // crate slider previous next area
+
   sliderContainer.innerHTML = '';
   const prevNext = document.createElement('div');
   prevNext.className = "prev-next d-flex w-100 justify-content-between align-items-center";
@@ -65,7 +64,9 @@ const createSlider=() => {
   document.querySelector('.main').style.display = 'block';
   // hide image aria
   imagesArea.style.display = 'none';
-  const duration = document.getElementById('duration').value || 1000;
+  const duration = document.getElementById('duration').value || 10000;
+
+
   sliders.forEach(slide => {
     let item = document.createElement('div')
     item.className = "slider-item";
@@ -115,16 +116,14 @@ searchBtn.addEventListener('click', function () {
   sliders.length = 0;
 })
 
-var input = document.getElementById("search")
-input.addEventListener("keyup", function(event) {
-  if (event.keycode === 13) {
-    document.getElementById("search-btn").click()
-  }
-})
-
-
 sliderBtn.addEventListener('click', function () {
-  createSlider ()
+  if(duration.value >= 0){
+    createSlider ()
+  }
+  else{
+    alert('do not input negative value.')
+    return;
+  }
 })
 
 const toggleSpinner = (show) =>{
