@@ -4,10 +4,11 @@ const galleryHeader = document.querySelector('.gallery-header');
 const searchBtn = document.getElementById('search-btn');
 const sliderBtn = document.getElementById('create-slider');
 const sliderContainer = document.getElementById('sliders');
-// selected image 
+
 let sliders = [];
 
-// show images 
+select.style.display="none";
+
 const showImages = (images) => {
   imagesArea.style.display = 'block';
   gallery.innerHTML = '';
@@ -112,6 +113,9 @@ searchBtn.addEventListener('click', function () {
   const search = document.getElementById('search');
   getImages(search.value)
   sliders.length = 0;
+  select.style.display="block";
+ 
+
 })
 
 search.addEventListener("keypress", checkKeyPress);
@@ -120,8 +124,8 @@ function checkKeyPress(key) {
   if(key.keyCode == "13"){
     const search = document.getElementById('search');
     getImages(search.value)
-    sliders.length = 0;
   }
+  select.style.display="block";
 }
 
 sliderBtn.addEventListener('click', function () {
