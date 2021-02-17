@@ -114,8 +114,6 @@ searchBtn.addEventListener('click', function () {
   getImages(search.value)
   sliders.length = 0;
   select.style.display="block";
- 
-
 })
 
 search.addEventListener("keypress", checkKeyPress);
@@ -124,8 +122,8 @@ function checkKeyPress(key) {
   if(key.keyCode == "13"){
     const search = document.getElementById('search');
     getImages(search.value)
+    select.style.display="block";
   }
-  select.style.display="block";
 }
 
 sliderBtn.addEventListener('click', function () {
